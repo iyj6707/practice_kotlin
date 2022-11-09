@@ -124,11 +124,11 @@ class BookServiceTest @Autowired constructor(
         val results = bookService.getBookStatistics()
 
         assertThat(results).hasSize(2)
-        assertCount(results, BookType.COMPUTER, 1)
-        assertCount(results, BookType.SCIENCE, 1)
+        assertCount(results, BookType.COMPUTER, 2L)
+        assertCount(results, BookType.SCIENCE, 1L)
     }
 
-    private fun assertCount(results: List<BookStatResponse>, type: BookType, count: Int) {
+    private fun assertCount(results: List<BookStatResponse>, type: BookType, count: Long) {
        assertThat(results.first {result -> result.type == type}.count).isEqualTo(count)
     }
 }
